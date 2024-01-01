@@ -14,7 +14,6 @@ const exp = (function() {
         beforeAfter: [['after', 'before'], ['before', 'after']][difficultyDraw],
         targetLetter: [['i', 'g'], ['g', 'i']][difficultyDraw],
         moreOrLess: ['more', 'less'][difficultyDraw],
-        nTrials: 50,
     };
 
     console.log(settings.difficulty, settings.gameType);
@@ -524,6 +523,23 @@ const exp = (function() {
         let trial = 1;
         const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
+        let stimIdxArray = [];
+        let latencyArray = [];
+        for (let i = 1; i <= 24; i++) {
+            if (i !== 11) {
+                stimIdxArray.push(i);
+                let latency = 30 * (i - 1) + 1500;
+                latencyArray.push(latency);
+            };
+        };
+        let stimIdxArray_1 = jsPsych.randomization.repeat(stimIdxArray, 1);
+        let stimIdxArray_2 = jsPsych.randomization.repeat(stimIdxArray, 1);
+        stimIdxArray = stimIdxArray_1.concat(stimIdxArray_2);
+
+        let latencyArray_1 = jsPsych.randomization.repeat(latencyArray, 1);
+        let latencyArray_2 = jsPsych.randomization.repeat(latencyArray, 1);
+        latencyArray = latencyArray_1.concat(latencyArray_2);
+
         // variables for streak condition
         let streak = 0;
         let finalStreak;
@@ -559,9 +575,7 @@ const exp = (function() {
             on_finish: (data) => {
                 data.trial_idx = trial;
                 data.practice = isPractice;
-                do {
-                    stimIdx = Math.floor(Math.random() * 24 + 1);
-                } while (stimIdx == 11)
+                stimIdx = stimIdxArray.pop();
                 targetIdx = (settings.difficulty[round] == "easy") ? stimIdx + 1 : stimIdx - 1;
            },
         };
@@ -574,7 +588,7 @@ const exp = (function() {
                 return playArea.replace('{headerNumber}', `${streak}`).replace('{tileContent}', tileContent);
             },
             trial_duration: () => { 
-                let latency = Math.floor(Math.random() * 800 + 1500);
+                let latency = latencyArray.pop();
                 return latency;
             },
             data: {phase: 'response', round: round + 1},
@@ -612,12 +626,11 @@ const exp = (function() {
             type: jsPsychHtmlKeyboardResponse,
             stimulus: function() {
                 let standardFeedback;
-
                 if (correct == 1) {
                     standardFeedback = winText;
                     if (isPractice) {
                         standardFeedback = winText.replace('+10 Tokens', `You won!`)
-                    } else if (gameType == 'streak' && trial == settings.nTrials) {
+                    } else if (gameType == 'streak' && stimIdxArray.length == 0) {
                         standardFeedback = winText.replace('10', `${10 * finalStreak}`)
                     };
                 } else {
@@ -640,7 +653,7 @@ const exp = (function() {
                     if (isPractice || gameType == "bern") {
                         return feedbackArea.replace('{headerNumber}', `${streak}`).replace('{token-text}', standardFeedback).replace('{extra-text}', bonusFeedback);
                     } else {
-                        if (trial == settings.nTrials) {
+                        if (stimIdxArray.length == 0) {
                             return feedbackArea.replace('{headerNumber}', `${finalStreak}`).replace('{token-text}', standardFeedback).replace('{extra-text}', bonusFeedback);
                         } else {
                             return playArea.replace('{headerNumber}', `<span style="color:green; font-weight:bold">${streak}</span>`).replace('{tileContent}', '');            
@@ -662,7 +675,7 @@ const exp = (function() {
                 };
                 data.trial_idx = trial;
                 data.practice = isPractice;
-                if (isPractice && trial == 4 || !isPractice && trial == settings.nTrials) {
+                if (isPractice && trial == 4 || !isPractice && stimIdxArray.length == 0) {
                     episode = 0;
                     jsPsych.endCurrentTimeline();
                 };
