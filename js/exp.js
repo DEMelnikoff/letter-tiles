@@ -841,78 +841,26 @@ const exp = (function() {
             allow_keys: false,
         };
 
-        const meanOfEffScale = ['-2<br>Strongly<br>Disagree', '-1<br>Disagree', '0<br>Neither agree<br>nor disagree', '1<br>Agree', '2<br>Strongly<br>Agree'];
 
-        const meanOfEff = {
-            type: jsPsychSurveyLikert,
-            preamble:
-                `<div style='padding-top: 50px; width: 900px; font-size:16px; color: rgb(109, 112, 114)'>
-                    <p><strong>Please answer the following questions as honestly and accurately as possible.</strong></p>
-                </div>`,
-            questions: [
-                {
-                    prompt: `Pushing myself helps me see the bigger picture.`,
-                    name: `meanOfEff_1`,
-                    labels: meanOfEffScale,
-                    required: true,
-                },
-                {
-                    prompt: `I often don't understand why I am working so hard.`,
-                    name: `meanOfEff_2r`,
-                    labels: meanOfEffScale,
-                    required: true,
-                },
-                {
-                    prompt: `I learn the most about myself when I am trying my hardest.`,
-                    name: `meanOfEff_3`,
-                    labels: meanOfEffScale,
-                    required: true,
-                },
-                {
-                    prompt: `Things make more sense when I can put my all into them.`,
-                    name: `meanOfEff_4`,
-                    labels: meanOfEffScale,
-                    required: true,
-                },
-                {
-                    prompt: `When I work hard, it rarely makes a difference.`,
-                    name: `meanOfEff_5r`,
-                    labels: meanOfEffScale,
-                    required: true,
-                },
-                {
-                    prompt: `When I push myself, what I'm doing feels important.`,
-                    name: `meanOfEff_6`,
-                    labels: meanOfEffScale,
-                    required: true,
-                },
-                {
-                    prompt: `When I push myself, I feel like I'm part of something bigger than me.`,
-                    name: `meanOfEff_7`,
-                    labels: meanOfEffScale,
-                    required: true,
-                },
-                {
-                    prompt: `Doing my best gives me a clear purpose in life.`,
-                    name: `meanOfEff_8`,
-                    labels: meanOfEffScale,
-                    required: true,
-                },
-                {
-                    prompt: `When I try my hardest, my life has meaning.`,
-                    name: `meanOfEff_9`,
-                    labels: meanOfEffScale,
-                    required: true,
-                },
-                {
-                    prompt: `When I exert myself, I feel connected to my ideal life.`,
-                    name: `meanOfEff_10`,
-                    labels: meanOfEffScale,
-                    required: true,
-                },
+        const freeResponse = {
+            type: jsPsychSurvey,
+            pages: [
+                [
+                    {
+                        type: 'multi-choice',
+                        prompt: `If you had to choose, which round of the Tile Game did you find most immersive and engaging?`,
+                        options: ['Round 1', 'Round 2'],
+                        name: 'forcedChoice',
+                    },
+                    {
+                        type: 'text',
+                        prompt: `In the space below, please explain your answer in as much detail as possible.`,
+                        textbox_rows: 7,
+                        name: 'explanation',
+                    },
+                ],
             ],
-            randomize_question_order: false,
-            scale_width: 500,
+            button_label_finish: 'Next',
             on_finish: (data) => {
                 dmPsych.saveSurveyData(data); 
             },
@@ -980,7 +928,7 @@ const exp = (function() {
 
 
         const demos = {
-            timeline: [taskComplete, gender, age, ethnicity, english, finalWord]
+            timeline: [taskComplete, freeResponse, gender, age, ethnicity, english, finalWord]
         };
 
         return demos;
