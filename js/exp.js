@@ -700,6 +700,7 @@ const exp = (function() {
     // scales
     const zeroToExtremely = ["0<br>A little", '1', '2', '3', '4', '5', '6', '7', '8', '9', "10<br>Extremely"];
     const zeroToALot = ['0<br>A little', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10<br>A lot'];
+    const scbScale = ['-4<br>Way too easy', '-3', '-2', '-1', '0<br>Neither too easy nor too difficult', '1', '2', '3', '4<br>Way too difficult'];
 
     // constructor functions
     function MakeFlowQs(round) {
@@ -707,31 +708,31 @@ const exp = (function() {
         this.type = jsPsychSurveyLikert;
         this.preamble = `<div style='padding-top: 50px; width: 850px; font-size:16px; color:rgb(109, 112, 114)'>
         <p>Thank you for completing ${secondVersion} the Tile Game!</p>
-        <p>During ${secondVersion} the Tile Game, to what extent did you feel<br><b>immersed</b> and <b>engaged</b> in what you were doing?</p>
+        <p>During ${secondVersion} of the Tile Game, to what extent did you feel<br><b>immersed</b> and <b>engaged</b> in what you were doing?</p>
         <p>Report the degree to which you felt immersed and engaged by answering the following questions.</p></div>`;
         this.questions = [
             {
-                prompt: `<div style='color:rgb(109, 112, 114)'>During ${secondVersion} the Tile Game, how <strong>absorbed</strong> did you feel in what you were doing?</div>`,
+                prompt: `<div style='color:rgb(109, 112, 114)'>During ${secondVersion} of the Tile Game, how <strong>absorbed</strong> did you feel in what you were doing?</div>`,
                 name: `absorbed`,
-                labels: ["0<br>Not very absorbed", '1', '2', '3', '4', '5', '6', '7', '8', '9', "10<br>More absorbed than I've ever felt"],
+                labels: ["0<br>Not very", '1', '2', '3', '4', '5', '6', '7', '8', '9', "10<br>Completely"],
                 required: true,
             },
             {
-                prompt: `<div style='color:rgb(109, 112, 114)'>During ${secondVersion} the Tile Game, how <strong>immersed</strong> did you feel in what you were doing?</div>`,
+                prompt: `<div style='color:rgb(109, 112, 114)'>During ${secondVersion} of the Tile Game, how <strong>immersed</strong> did you feel in what you were doing?</div>`,
                 name: `immersed`,
-                labels: ["0<br>Not very immersed", '1', '2', '3', '4', '5', '6', '7', '8', '9', "10<br>More immersed than I've ever felt"],
+                labels: ["0<br>Not very", '1', '2', '3', '4', '5', '6', '7', '8', '9', "10<br>Completely"],
                 required: true,
             },
             {
-                prompt: `<div style='color:rgb(109, 112, 114)'>During ${secondVersion} the Tile Game, how <strong>engaged</strong> did you feel in what you were doing?</div>`,
+                prompt: `<div style='color:rgb(109, 112, 114)'>During ${secondVersion} of the Tile Game, how <strong>engaged</strong> did you feel in what you were doing?</div>`,
                 name: `engaged`,
-                labels: ["0<br>Not very engaged", '1', '2', '3', '4', '5', '6', '7', '8', '9', "10<br>More engaged than I've ever felt"],
+                labels: ["0<br>Not very", '1', '2', '3', '4', '5', '6', '7', '8', '9', "10<br>Completely"],
                 required: true,
             },
             {
-                prompt: `<div style='color:rgb(109, 112, 114)'>During ${secondVersion} the Tile Game, how <strong>engrossed</strong> did you feel in what you were doing?</div>`,
+                prompt: `<div style='color:rgb(109, 112, 114)'>During ${secondVersion} of the Tile Game, how <strong>engrossed</strong> did you feel in what you were doing?</div>`,
                 name: `engrossed`,
-                labels: ["0<br>Not very engrossed", '1', '2', '3', '4', '5', '6', '7', '8', '9', "10<br>More engrossed than I've ever felt"],
+                labels: ["0<br>Not very", '1', '2', '3', '4', '5', '6', '7', '8', '9', "10<br>Completely"],
                 required: true,
             },
         ];
@@ -748,37 +749,37 @@ const exp = (function() {
         this.type = jsPsychSurveyLikert;
         this.preamble = `<div style='padding-top: 50px; width: 850px; font-size:16px; color:rgb(109, 112, 114)'>
 
-        <p>Below are a few more questions about ${secondVersion} the Tile Game.</p>
+        <p>Below are a few more questions about ${secondVersion} of the Tile Game.</p>
 
         <p>Instead of asking about immersion and engagement, these questions ask about <strong>enjoyment</strong>.<br>
-        Report how much you <strong>enjoyed</strong> ${secondVersion} the Tile Game by answering the following questions.</p></div>`;
+        Report how much you <strong>enjoyed</strong> ${secondVersion} of the Tile Game by answering the following questions.</p></div>`;
         this.questions = [
             {
-                prompt: `<div style='color:rgb(109, 112, 114)'>How much did you <strong>enjoy</strong> playing ${secondVersion} the Tile Game?</div>`,
+                prompt: `<div style='color:rgb(109, 112, 114)'>How much did you <strong>enjoy</strong> playing ${secondVersion} of the Tile Game?</div>`,
                 name: `enjoyable`,
                 labels: zeroToALot,
                 required: true,
             },
             {
-                prompt: `<div style='color:rgb(109, 112, 114)'>How much did you <strong>like</strong> playing ${secondVersion} the Tile Game?</div>`,
+                prompt: `<div style='color:rgb(109, 112, 114)'>How much did you <strong>like</strong> playing ${secondVersion} of the Tile Game?</div>`,
                 name: `like`,
                 labels: zeroToALot,
                 required: true,
             },
             {
-                prompt: `<div style='color:rgb(109, 112, 114)'>How much did you <strong>dislike</strong> playing ${secondVersion} the Tile Game?</div>`,
+                prompt: `<div style='color:rgb(109, 112, 114)'>How much did you <strong>dislike</strong> playing ${secondVersion} of the Tile Game?</div>`,
                 name: `dislike`,
                 labels: zeroToALot,
                 required: true,
             },
             {
-                prompt: `<div style='color:rgb(109, 112, 114)'>How much <strong>fun</strong> did you have playing ${secondVersion} the Tile Game?</div>`,
+                prompt: `<div style='color:rgb(109, 112, 114)'>How much <strong>fun</strong> did you have playing ${secondVersion} of the Tile Game?</div>`,
                 name: `fun`,
                 labels: zeroToALot,
                 required: true,
             },
             {
-                prompt: `<div style='color:rgb(109, 112, 114)'>How <strong>entertaining</strong> was ${secondVersion} the Tile Game?</div>`,
+                prompt: `<div style='color:rgb(109, 112, 114)'>How <strong>entertaining</strong> was ${secondVersion} of the Tile Game?</div>`,
                 name: `entertaining`,
                 labels: zeroToExtremely,
                 required: true,
@@ -797,7 +798,7 @@ const exp = (function() {
         this.type = jsPsychSurveyLikert;
         this.questions = [
             {
-                prompt: `<div style='color:rgb(109, 112, 114)'>How <b>effortful</b> was ${secondVersion} the Tile Game?</div>`,
+                prompt: `<div style='color:rgb(109, 112, 114)'>How <b>effortful</b> was ${secondVersion} of the Tile Game?</div>`,
                 name: `effort`,
                 labels: zeroToALot,
                 required: true,
@@ -811,14 +812,33 @@ const exp = (function() {
         };
     };
 
+    function MakeScbQs(round) {
+        const secondVersion = (round == 1) ? 'Round 1' : 'Round 2';
+        this.type = jsPsychSurveyLikert;
+        this.questions = [
+            {
+                prompt: `<div style='color:rgb(109, 112, 114)'>Was ${secondVersion} of the Tile Game too easy, too difficult, or somewhere in between?</div>`,
+                name: `scb`,
+                labels: zeroToALot,
+                required: scbScale,
+            },
+        ];
+        this.randomize_question_order = false;
+        this.scale_width = 700;
+        this.data = {round: round};
+        this.on_finish = (data) => {
+            dmPsych.saveSurveyData(data);      
+        };
+    };
+
 
     // timeline: second wheel
     p.tileGame_timeline_1 = {
-        timeline: [ attnChk1, tileGame_1, new MakeFlowQs(1), new MakeEnjoyQs(1), new MakeEffortQs(1)],
+        timeline: [ attnChk1, tileGame_1, new MakeFlowQs(1), new MakeEnjoyQs(1), new MakeEffortQs(1), new MakeScbQs(1)],
     };
 
     p.tileGame_timeline_2 = {
-        timeline: [ attnChk2, tileGame_2, new MakeFlowQs(2), new MakeEnjoyQs(2), new MakeEffortQs(2)],
+        timeline: [ attnChk2, tileGame_2, new MakeFlowQs(2), new MakeEnjoyQs(2), new MakeEffortQs(2), new MakeScbQs(2)],
     };
 
    /*
