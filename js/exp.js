@@ -800,7 +800,7 @@ const exp = (function() {
             {
                 prompt: `<div style='color:rgb(109, 112, 114)'>How <b>effortful</b> was ${secondVersion} of the Tile Game?</div>`,
                 name: `effort`,
-                labels: zeroToALot,
+                labels: zeroToExtremely,
                 required: true,
             },
         ];
