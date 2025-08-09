@@ -819,8 +819,8 @@ const exp = (function() {
             {
                 prompt: `<div style='color:rgb(109, 112, 114)'>Was ${secondVersion} of the Tile Game too easy, too difficult, or somewhere in between?</div>`,
                 name: `scb`,
-                labels: zeroToALot,
-                required: scbScale,
+                labels: scbScale,
+                required: true,
             },
         ];
         this.randomize_question_order = false;
