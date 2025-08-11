@@ -313,7 +313,7 @@ const exp = (function() {
                 {
                     type: 'html',
                     prompt: `<p>Round 1 of the Tile Game is now complete!</p>
-                    <p>Soon, you'll continue earning tokens by playing Round 2 of the tile Game.</p>`
+                    <p>Soon, you'll continue earning tokens by playing Round 2 of the Tile Game.</p>`
                 },
             ],
             [
@@ -813,12 +813,17 @@ const exp = (function() {
     };
 
     function MakeScbQs(round) {
-        const secondVersion = (round == 1) ? 'Round 1' : 'Round 2';
         this.type = jsPsychSurveyLikert;
         this.questions = [
             {
-                prompt: `<div style='color:rgb(109, 112, 114)'>Was ${secondVersion} of the Tile Game too easy, too difficult, or somewhere in between?</div>`,
-                name: `scb`,
+                prompt: `<div style='color:rgb(109, 112, 114)'>Was <b>Round 1</b> of the Tile Game too easy, too difficult, or somewhere in between?</div>`,
+                name: `scb_1`,
+                labels: scbScale,
+                required: true,
+            },
+            {
+                prompt: `<div style='color:rgb(109, 112, 114)'>Was <b>Round 2</b> of the Tile Game too easy, too difficult, or somewhere in between?</div>`,
+                name: `scb_2`,
                 labels: scbScale,
                 required: true,
             },
@@ -834,7 +839,7 @@ const exp = (function() {
 
     // timeline: second wheel
     p.tileGame_timeline_1 = {
-        timeline: [ attnChk1, tileGame_1, new MakeFlowQs(1), new MakeEnjoyQs(1), new MakeEffortQs(1), new MakeScbQs(1)],
+        timeline: [ attnChk1, tileGame_1, new MakeFlowQs(1), new MakeEnjoyQs(1), new MakeEffortQs(1)],
     };
 
     p.tileGame_timeline_2 = {
