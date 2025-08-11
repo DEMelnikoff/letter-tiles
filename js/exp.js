@@ -714,25 +714,25 @@ const exp = (function() {
             {
                 prompt: `<div style='color:rgb(109, 112, 114)'>During ${secondVersion} of the Tile Game, how <strong>absorbed</strong> did you feel in what you were doing?</div>`,
                 name: `absorbed`,
-                labels: ["0<br>Not very", '1', '2', '3', '4', '5', '6', '7', '8', '9', "10<br>Completely"],
+                labels: ["0<br>Not very absorbed", '1', '2', '3', '4', '5', '6', '7', '8', '9', "10<br>More absorbed than I've ever felt"],
                 required: true,
             },
             {
                 prompt: `<div style='color:rgb(109, 112, 114)'>During ${secondVersion} of the Tile Game, how <strong>immersed</strong> did you feel in what you were doing?</div>`,
                 name: `immersed`,
-                labels: ["0<br>Not very", '1', '2', '3', '4', '5', '6', '7', '8', '9', "10<br>Completely"],
+                labels: ["0<br>Not very immersed", '1', '2', '3', '4', '5', '6', '7', '8', '9', "10<br>More immersed than I've ever felt"],
                 required: true,
             },
             {
                 prompt: `<div style='color:rgb(109, 112, 114)'>During ${secondVersion} of the Tile Game, how <strong>engaged</strong> did you feel in what you were doing?</div>`,
                 name: `engaged`,
-                labels: ["0<br>Not very", '1', '2', '3', '4', '5', '6', '7', '8', '9', "10<br>Completely"],
+                labels: ["0<br>Not very engaged", '1', '2', '3', '4', '5', '6', '7', '8', '9', "10<br>More engaged than I've ever felt"],
                 required: true,
             },
             {
                 prompt: `<div style='color:rgb(109, 112, 114)'>During ${secondVersion} of the Tile Game, how <strong>engrossed</strong> did you feel in what you were doing?</div>`,
                 name: `engrossed`,
-                labels: ["0<br>Not very", '1', '2', '3', '4', '5', '6', '7', '8', '9', "10<br>Completely"],
+                labels: ["0<br>Not very engrossed", '1', '2', '3', '4', '5', '6', '7', '8', '9', "10<br>More engrossed than I've ever felt"],
                 required: true,
             },
         ];
@@ -965,7 +965,7 @@ const exp = (function() {
     p.save_data = {
         type: jsPsychPipe,
         action: "save",
-        experiment_id: "x3I4JIvjxi0p",
+        experiment_id: "H10H7LMhQ8rt",
         filename: dmPsych.filename,
         data_string: ()=>jsPsych.data.get().csv()
     };
