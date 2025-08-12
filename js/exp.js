@@ -528,7 +528,7 @@ const exp = (function() {
         for (let i = 1; i <= 24; i++) {
             if (i !== 11) {
                 stimIdxArray.push(i);
-                let latency = 30 * (i - 1) + 2500;
+                let latency = 30 * (i - 1) + 2700;
                 latencyArray.push(latency);
             };
         };
