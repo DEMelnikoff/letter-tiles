@@ -528,7 +528,7 @@ const exp = (function() {
         for (let i = 1; i <= 24; i++) {
             if (i !== 11) {
                 stimIdxArray.push(i);
-                let latency = 30 * (i - 1) + 2200;
+                let latency = 30 * (i - 1) + 1700;
                 latencyArray.push(latency);
             };
         };
@@ -589,7 +589,9 @@ const exp = (function() {
             },
             trial_duration: () => { 
                 let latency = latencyArray.pop();
-                return latency;
+                let latency_adjustment = (settings.difficulty[round] == "easy") ? 1000 : 0;
+                let latency_adjusted = latency + latency_adjustment;
+                return latency_adjusted;
             },
             data: {phase: 'response', round: round + 1},
             on_finish: (data) => {
@@ -970,7 +972,7 @@ const exp = (function() {
     p.save_data = {
         type: jsPsychPipe,
         action: "save",
-        experiment_id: "TZSIYxrW167b",
+        experiment_id: "mF9r2WCUBNyZ",
         filename: dmPsych.filename,
         data_string: ()=>jsPsych.data.get().csv()
     };
